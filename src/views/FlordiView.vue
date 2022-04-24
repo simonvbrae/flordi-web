@@ -268,11 +268,12 @@ export default Vue.extend({
       console.log(event);
     },
 
-    updateScrollState(v: number) {
+    updateScrollState(v: number): boolean {
       if (this.scrollState + v < 0 || this.scrollState + v > 100) {
-        return;
+        return true;
       }
       this.scrollState += v;
+      return false;
     },
     getListeners() {
       const listeners: Array<[string, any, Record<string, unknown>?]> = [
@@ -306,8 +307,9 @@ export default Vue.extend({
       // Prevent keyboard scroll and update scrollState
       if (e.type == "wheel") {
         if (e.wheelDelta < 0) {
-          e.preventDefault();
-          this.updateScrollState(1);
+          if (!this.updateScrollState(1)) {
+            e.preventDefault();
+          }
         }
         // else {
         //   e.preventDefault();
@@ -324,6 +326,10 @@ export default Vue.extend({
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.active {
+  color: red;
 }
 
 html {
