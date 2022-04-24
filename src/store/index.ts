@@ -12,12 +12,11 @@ export default new Vuex.Store({
   },
   mutations: {
     INCREMENT_SCROLL_STATE(state) {
-      state.scrollState += 1;
+      state.scrollState++;
     },
   },
   actions: {
     incrementScrollState() {
-      console.log("increment");
       this.commit("INCREMENT_SCROLL_STATE");
     },
   },

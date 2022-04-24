@@ -29,7 +29,7 @@ export default {
   computed: {
     fadeOnScroll: function () {
       console.log(this.scrollState);
-      return {opacity: `${100-this.scrollState}%`};
+      return {opacity: `${100-this.scrollState*2}%`};
     },
 
     imagePath() {

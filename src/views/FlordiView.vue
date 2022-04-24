@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SplashPageComponent :scrollState="1" t></SplashPageComponent>
+    <SplashPageComponent :scrollState="scrollState" t></SplashPageComponent>
     <div>
       <div :style="backgroundImage">
         <MainMenuComponent></MainMenuComponent>
@@ -206,6 +206,11 @@ import SplashPageComponent from "@/components/SplashPageComponent.vue";
 export default Vue.extend({
   name: "FlordiView",
   components: { MainMenuComponent, SplashPageComponent },
+  data() {
+    return {
+      scrollState: 0,
+    };
+  },
   computed: {
     backgroundImage() {
       return {
@@ -225,7 +230,6 @@ export default Vue.extend({
         width: "100%",
       };
     },
-    ...mapState(["scrollState"]),
   },
   created() {
     for (let i of this.getListeners()) {
@@ -260,8 +264,8 @@ export default Vue.extend({
     },
     handleKeyboardScroll(e: any) {
       // Prevent keyboard scroll
-      let keys = [32, 33, 34, 35, 37, 38, 39, 40];
-      if (keys.includes(e.keyCode)) {
+      let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
+      if (scrollKeys.includes(e.keyCode)) {
         this.scrollGuardian(e);
       }
     },
@@ -269,17 +273,10 @@ export default Vue.extend({
       this.scrollGuardian(e);
     },
     scrollGuardian(e: any) {
-      if (this.$store.getters.getScrollState() < 100) {
+      if (this.scrollState < 100) {
         e.preventDefault();
-        this.$store.dispatch("incrementScrollState");
-        console.log(this.$store.getters.getScrollState())
-      } else {
-        console.log("after");
+        this.scrollState++;
       }
-
-    }
-    getScrollState() {
-      return this.$store.state.getScrollState;
     },
   },
 });
