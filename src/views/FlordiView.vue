@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SplashPageComponent :scrollState="scrollState" t></SplashPageComponent>
+    <SplashPageComponent :scrollState="1" t></SplashPageComponent>
     <div>
       <div :style="backgroundImage">
         <MainMenuComponent></MainMenuComponent>
@@ -228,14 +228,51 @@ export default Vue.extend({
     ...mapState(["scrollState"]),
   },
   created() {
-    window.addEventListener("scroll", this.handleScroll);
+    for (let i of this.getListeners()) {
+      window.addEventListener(i[0], i[1], i[2]);
+    }
   },
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+    for (let i of this.getListeners()) {
+      window.removeEventListener(i[0], i[1], i[2]);
+    }
   },
   methods: {
-    handleScroll() {
-      this.$store.dispatch("incrementScrollState");
+    getListeners() {
+      const listeners: Array<[string, any, Record<string, unknown>?]> = [
+        ["keydown", this.handleKeyboardScroll],
+        [
+          "touchmove",
+          this.preventScroll,
+          {
+            passive: false,
+          },
+        ],
+        [
+          "wheel",
+          this.preventScroll,
+          {
+            passive: false,
+          },
+        ],
+      ];
+      return listeners;
+    },
+    handleKeyboardScroll(e: any) {
+      // Prevent keyboard scroll
+      let keys = [32, 33, 34, 35, 37, 38, 39, 40];
+      if (keys.includes(e.keyCode)) {
+        e.preventDefault();
+        return false;
+      }
+      if (this.$store.getters.getScrollState() < 100) {
+        this.$store.dispatch("incrementScrollState");
+      } else {
+        console.log("after");
+      }
+    },
+    preventScroll(e: any) {
+      e.preventDefault();
     },
     getScrollState() {
       return this.$store.state.getScrollState;
@@ -243,3 +280,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
