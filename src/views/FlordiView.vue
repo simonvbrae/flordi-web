@@ -1,10 +1,25 @@
 <template>
   <div>
     <SplashPageComponent :scrollState="scrollState" t></SplashPageComponent>
+    <VScrollActive class="sticky">
+      <v-container>
+        <v-row no-gutters>
+          <v-col cols="12" sm="4">
+            <a href="#home" data-scroll-active="home">Home</a>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <a href="#about" data-scroll-active="about">About Us</a>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <a href="#portfolio" data-scroll-active="portfolio">Portfolio</a>
+          </v-col>
+        </v-row>
+      </v-container>
+    </VScrollActive>
     <div>
       <div :style="backgroundImage">
         <MainMenuComponent></MainMenuComponent>
-        <h1>Home</h1>
+        <h1><a id="home"></a>Home</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
           condimentum, purus at malesuada tempus, tellus augue vulputate augue,
@@ -51,7 +66,7 @@
           metus vitae velit. Nunc eget lacus faucibus, blandit erat vel,
           vehicula nisl. Mauris vel rhoncus dolor.
         </p>
-        <h1>About Us</h1>
+        <h1><a id="about"></a>About Us</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
           condimentum, purus at malesuada tempus, tellus augue vulputate augue,
@@ -98,7 +113,7 @@
           metus vitae velit. Nunc eget lacus faucibus, blandit erat vel,
           vehicula nisl. Mauris vel rhoncus dolor.
         </p>
-        <h1>Portfolio</h1>
+        <h1><a id="portfolio"></a>Portfolio</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
           condimentum, purus at malesuada tempus, tellus augue vulputate augue,
@@ -145,7 +160,7 @@
           metus vitae velit. Nunc eget lacus faucibus, blandit erat vel,
           vehicula nisl. Mauris vel rhoncus dolor.
         </p>
-        <h1>Contact</h1>
+        <h1><a id="contact"></a>Contact</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
           condimentum, purus at malesuada tempus, tellus augue vulputate augue,
@@ -199,13 +214,17 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState } from "vuex";
 import MainMenuComponent from "@/components/MainMenuComponent.vue";
 import SplashPageComponent from "@/components/SplashPageComponent.vue";
+import VScrollActive from "v-scroll-active";
 
 export default Vue.extend({
   name: "FlordiView",
-  components: { MainMenuComponent, SplashPageComponent },
+  components: {
+    MainMenuComponent,
+    SplashPageComponent,
+    VScrollActive,
+  },
   data() {
     return {
       scrollState: 0,
@@ -242,19 +261,32 @@ export default Vue.extend({
     }
   },
   methods: {
+    handleNavbarChange(id: any) {
+      console.log("current active id is " + id);
+    },
+    onItemChanged(event: any, currentItem: any, lastActiveItem: any) {
+      console.log(event);
+    },
+
+    updateScrollState(v: number) {
+      if (this.scrollState + v < 0 || this.scrollState + v > 100) {
+        return;
+      }
+      this.scrollState += v;
+    },
     getListeners() {
       const listeners: Array<[string, any, Record<string, unknown>?]> = [
         ["keydown", this.handleKeyboardScroll],
         [
           "touchmove",
-          this.preventScroll,
+          this.handleNonKeyboardScroll,
           {
             passive: false,
           },
         ],
         [
           "wheel",
-          this.preventScroll,
+          this.handleNonKeyboardScroll,
           {
             passive: false,
           },
@@ -266,16 +298,21 @@ export default Vue.extend({
       // Prevent keyboard scroll
       let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
       if (scrollKeys.includes(e.keyCode)) {
-        this.scrollGuardian(e);
+        e.preventDefault();
+        this.updateScrollState(1);
       }
     },
-    preventScroll(e: any) {
-      this.scrollGuardian(e);
-    },
-    scrollGuardian(e: any) {
-      if (this.scrollState < 100) {
-        e.preventDefault();
-        this.scrollState++;
+    handleNonKeyboardScroll(e: any) {
+      // Prevent keyboard scroll and update scrollState
+      if (e.type == "wheel") {
+        if (e.wheelDelta < 0) {
+          e.preventDefault();
+          this.updateScrollState(1);
+        }
+        // else {
+        //   e.preventDefault();
+        //   this.updateScrollState(-1);
+        // }
       }
     },
   },
@@ -283,6 +320,12 @@ export default Vue.extend({
 </script>
 
 <style>
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }

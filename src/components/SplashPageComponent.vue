@@ -28,8 +28,7 @@ export default {
   },
   computed: {
     fadeOnScroll: function () {
-      console.log(this.scrollState);
-      return {opacity: `${100-this.scrollState*2}%`};
+      return {opacity: `${100-Math.pow(1.1, this.scrollState/2)}%`, display: Math.pow(1.1,this.scrollState/2)>=112 ? "none" : ""};
     },
 
     imagePath() {
@@ -55,14 +54,6 @@ export default {
         backgroundSize: "cover",
       };
     },
-  },
-  methods: {
-    handleInput(ev) {
-      console.log(ev);
-    }
-  },
-  created() {
-    window.addEventListener("keydown", this.handleInput);
   },
 };
 </script>
