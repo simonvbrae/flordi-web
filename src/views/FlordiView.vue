@@ -262,18 +262,22 @@ export default Vue.extend({
       // Prevent keyboard scroll
       let keys = [32, 33, 34, 35, 37, 38, 39, 40];
       if (keys.includes(e.keyCode)) {
-        e.preventDefault();
-        return false;
-      }
-      if (this.$store.getters.getScrollState() < 100) {
-        this.$store.dispatch("incrementScrollState");
-      } else {
-        console.log("after");
+        this.scrollGuardian(e);
       }
     },
     preventScroll(e: any) {
-      e.preventDefault();
+      this.scrollGuardian(e);
     },
+    scrollGuardian(e: any) {
+      if (this.$store.getters.getScrollState() < 100) {
+        e.preventDefault();
+        this.$store.dispatch("incrementScrollState");
+        console.log(this.$store.getters.getScrollState())
+      } else {
+        console.log("after");
+      }
+
+    }
     getScrollState() {
       return this.$store.state.getScrollState;
     },
