@@ -9,12 +9,15 @@
       <VScrollActive class="sticky">
         <v-container fluid justify="center">
           <v-row no-gutters>
-            <v-col cols="3" xs="3" style="background-color: grey">
+            <v-col cols="2" xs="3" style="background-color: lightblue">
+              <img class="logo" src="@/assets/images/logo_small2.png" />
+            </v-col>
+            <v-col cols="2" xs="3" style="background-color: grey">
               <a class="menuitem" href="#events" data-scroll-active="events"
                 >Events</a
               >
             </v-col>
-            <v-col cols="3" xs="3" style="background-color: grey">
+            <v-col cols="2" xs="3" style="background-color: grey">
               <a
                 class="menuitem"
                 href="#portfolio"
@@ -23,12 +26,12 @@
                 Portfolio</a
               >
             </v-col>
-            <v-col cols="3" xs="3" style="background-color: grey">
+            <v-col cols="2" xs="3" style="background-color: grey">
               <a class="menuitem" href="#studios" data-scroll-active="studios"
                 >Studio's</a
               >
             </v-col>
-            <v-col cols="3" xs="3" style="background-color: grey">
+            <v-col cols="2" xs="3" style="background-color: grey">
               <a class="menuitem" href="#contact" data-scroll-active="contact"
                 >Contact</a
               >
@@ -40,6 +43,7 @@
     <div class="contentDiv">
       <FlordiComponent></FlordiComponent>
     </div>
+    <img style="width: 100vw" src="@/assets/images/mascots.png" />
   </div>
 </template>
 
@@ -176,6 +180,11 @@ export default Vue.extend({
 
 .front {
   z-index: 100;
+}
+
+.logo {
+  padding-top: 3vh;
+  width: 10vw;
 }
 
 html {
