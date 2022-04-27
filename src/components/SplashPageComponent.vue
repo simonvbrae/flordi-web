@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ loader: true, fillParent: true }"
-    :style="{ ...backgroundImage, ...fadeOnScroll }"
+    :style="{ ...backgroundImage, ...fadeValue }"
   >
     <div
       :class="{
@@ -27,8 +27,8 @@ export default {
     },
   },
   computed: {
-    fadeOnScroll: function () {
-      return {opacity: `${100-Math.pow(1.1, this.scrollState/2)}%`, display: Math.pow(1.1,this.scrollState/2)>=112 ? "none" : ""};
+    fadeValue: function () {
+      return {opacity: `${100-this.scrollTransformation(this.scrollState)}%`, display: this.scrollTransformation(this.scrollState)>=100 ? "none" : ""};
     },
 
     imagePath() {
@@ -55,6 +55,11 @@ export default {
       };
     },
   },
+  methods: {
+    scrollTransformation() {
+      return this.scrollState;
+    }
+  }
 };
 </script>
 
