@@ -6,33 +6,48 @@
       t
     ></SplashPageComponent>
     <div>
-      <VScrollActive class="sticky">
-        <v-container fluid justify="center">
+      <VScrollActive
+        active-class="active"
+        :offset="45"
+        :duration="800"
+        bezier-easing-value=".5,0,.35,1"
+        class="sticky"
+      >
+        <v-container class="flex-nowrap" justify="center">
           <v-row no-gutters>
-            <v-col cols="2" xs="3" style="background-color: lightblue">
+            <v-col cols="2" xs="3">
               <img class="logo" src="@/assets/images/logo_small2.png" />
             </v-col>
-            <v-col cols="2" xs="3" style="background-color: grey">
-              <a class="menuitem" href="#events" data-scroll-active="events"
+            <v-col class="events" cols="2" xs="3">
+              <a
+                class="menuitem text"
+                href="#events"
+                data-scroll-active="events"
                 >Events</a
               >
             </v-col>
-            <v-col cols="2" xs="3" style="background-color: grey">
+            <v-col class="mission" cols="2" xs="3">
               <a
-                class="menuitem"
+                class="menuitem text"
                 href="#portfolio"
                 data-scroll-active="portfolio"
               >
-                Portfolio</a
+                Mission</a
               >
             </v-col>
-            <v-col cols="2" xs="3" style="background-color: grey">
-              <a class="menuitem" href="#studios" data-scroll-active="studios"
+            <v-col class="studios" cols="2" xs="3">
+              <a
+                class="menuitem text"
+                href="#studios"
+                data-scroll-active="studios"
                 >Studio's</a
               >
             </v-col>
-            <v-col cols="2" xs="3" style="background-color: grey">
-              <a class="menuitem" href="#contact" data-scroll-active="contact"
+            <v-col class="contact" cols="2" xs="3">
+              <a
+                class="menuitem text"
+                href="#contact"
+                data-scroll-active="contact"
                 >Contact</a
               >
             </v-col>
@@ -41,6 +56,13 @@
       </VScrollActive>
     </div>
     <div class="contentDiv">
+      <div class="pt-2"></div>
+      <img
+        class="pt-5"
+        style="width: 80vw; opacity: 80; fill-opacity: 0"
+        src="@/assets/images/flordi_title.png"
+      />
+      <h5 class="mt-3 pb-5 slogan text">Een nieuw muziekcafé opening soon!</h5>
       <FlordiComponent></FlordiComponent>
     </div>
     <img style="width: 100vw" src="@/assets/images/mascots.png" />
@@ -130,6 +152,12 @@ export default Vue.extend({
         // }
       }
     },
+    onItemChanged(event: any, currentItem: any, lastActiveItem: any) {
+      console.log(event);
+      console.log(currentItem);
+      console.log(lastActiveItem);
+      // here you have access to everything you need regarding that event
+    },
   },
   created() {
     for (let i of this.getListeners()) {
@@ -145,20 +173,18 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.menuitem {
+.banner {
+  text-align: center;
   text-decoration: none;
   color: lightgrey;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 20vw;
 }
-
-.menuitem:hover,
-.menuitem:focus {
-  /* font-weight: 901; */
+.slogan {
   color: white;
-  /* text-decoration: underline; */
+  font-size: 4vw;
 }
 
 .sticky {
@@ -171,7 +197,7 @@ export default Vue.extend({
 }
 
 .contentDiv {
-  margin-top: 5vh;
+  /* margin-top: 20vh; */
 }
 
 .parent {
@@ -183,8 +209,39 @@ export default Vue.extend({
 }
 
 .logo {
-  padding-top: 3vh;
   width: 10vw;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+.events {
+  min-width: 18vw;
+}
+.mission {
+  min-width: 18vw;
+}
+.studios {
+  min-width: 18vw;
+}
+.contact {
+  min-width: 18vw;
+}
+
+.menuitem {
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: lightgrey;
+  /* font-size: 25px; */
+  font-size: 3.7vw;
+  display: block;
+  padding: 1vh 2vw 1vh 2vw;
+}
+
+.menuitem:hover,
+.menuitem:focus {
+  color: white;
 }
 
 html {

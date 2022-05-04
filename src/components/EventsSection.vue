@@ -1,11 +1,5 @@
 <template>
-  <div :id="section_id">
-    <!-- <KleineComponent
-      v-for="event in events"
-      title="{{event.title}}"
-      date="{{event.title}}"
-      hour="{{event.title}}"
-    ></KleineComponent> -->
+  <div class="t px-4" :id="section_id">
     <v-container>
       <v-row v-for="e in events" :key="e.title">
         <v-col cols="3"> {{ e.title }} </v-col>
@@ -58,5 +52,8 @@ export default Vue.extend({
 .date {
   fill-opacity: 50%;
   background-color: red;
+}
+.t {
+  margin-bottom: 10vh;
 }
 </style>
