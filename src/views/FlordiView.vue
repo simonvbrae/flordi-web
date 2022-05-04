@@ -65,13 +65,14 @@
       <h5 class="mt-3 pb-5 slogan text">Een nieuw muziekcafé opening soon!</h5>
       <FlordiComponent></FlordiComponent>
     </div>
-    <img style="width: 100vw" src="@/assets/images/mascots.png" />
+    <FlordiFooter></FlordiFooter>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import FlordiComponent from "@/components/FlordiComponent.vue";
+import FlordiFooter from "@/components/FlordiFooter.vue";
 import VScrollActive from "v-scroll-active";
 import SplashPageComponent from "@/components/SplashPageComponent.vue";
 
@@ -81,6 +82,7 @@ export default Vue.extend({
     FlordiComponent,
     VScrollActive,
     SplashPageComponent,
+    FlordiFooter,
   },
   data() {
     return {
@@ -188,6 +190,7 @@ export default Vue.extend({
 }
 
 .sticky {
+  z-index: 10;
   position: fixed;
   top: 1;
   width: 100%;
