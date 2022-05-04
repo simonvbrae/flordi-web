@@ -1,8 +1,7 @@
 <template>
   <div>
-    <EventsSection style="display: none" section_id="events"></EventsSection>
+    <EventsSection section_id="events"></EventsSection>
     <MainPageItem
-      style="display: none"
       item_title="Portfolio"
       item_id="portfolio"
       content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
@@ -52,7 +51,6 @@
       ><a id="events"></a><a id="portfolio"></a
     ></MainPageItem>
     <MainPageItem
-      style="display: none"
       item_title="Studio's"
       item_id="studios"
       content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

@@ -7,6 +7,7 @@
     ></SplashPageComponent>
     <div>
       <VScrollActive
+        v-on:itemchanged="idk"
         active-class="active"
         :offset="45"
         :duration="800"
@@ -63,7 +64,7 @@
         src="@/assets/images/flordi_title.png"
       />
       <h5 class="mt-3 pb-5 slogan text">Een nieuw muziekcafé opening soon!</h5>
-      <FlordiComponent></FlordiComponent>
+      <FlordiComponent class="text"></FlordiComponent>
     </div>
     <FlordiFooter></FlordiFooter>
   </div>
@@ -154,7 +155,7 @@ export default Vue.extend({
         // }
       }
     },
-    onItemChanged(event: any, currentItem: any, lastActiveItem: any) {
+    idk(event: any, currentItem: any, lastActiveItem: any) {
       console.log(event);
       console.log(currentItem);
       console.log(lastActiveItem);
@@ -195,9 +196,6 @@ export default Vue.extend({
   top: 1;
   width: 100%;
 }
-.active {
-  color: white;
-}
 
 .contentDiv {
   /* margin-top: 20vh; */
@@ -229,6 +227,9 @@ export default Vue.extend({
 }
 .contact {
   min-width: 18vw;
+}
+.active {
+  color: white;
 }
 
 .menuitem {
