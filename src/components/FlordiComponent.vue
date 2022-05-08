@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ContactSection section_id="contact"></ContactSection>
     <EventsSection section_id="events"></EventsSection>
     <MainPageItem
       item_title="Portfolio"
@@ -99,7 +100,6 @@
           vehicula nisl. Mauris vel rhoncus dolor."
       ><a id="events"></a><a id="studios"></a
     ></MainPageItem>
-    <ContactSection section_id="contact"></ContactSection>
   </div>
 </template>
 

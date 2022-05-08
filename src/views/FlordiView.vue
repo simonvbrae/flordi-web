@@ -14,11 +14,20 @@
         bezier-easing-value=".5,0,.35,1"
         class="sticky"
       >
-        <v-container class="flex-nowrap" justify="center">
+        <v-container fluid class="flex-nowrap" justify="center">
           <v-row no-gutters>
             <v-col cols="2" xs="3">
               <img class="logo" src="@/assets/images/logo_small2.png" />
             </v-col>
+            <v-col class="contact" cols="2" xs="3">
+              <a
+                class="menuitem text"
+                href="#contact"
+                data-scroll-active="contact"
+                >Contact</a
+              >
+            </v-col>
+
             <v-col class="events" cols="2" xs="3">
               <a
                 class="menuitem text"
@@ -42,14 +51,6 @@
                 href="#studios"
                 data-scroll-active="studios"
                 >Studio's</a
-              >
-            </v-col>
-            <v-col class="contact" cols="2" xs="3">
-              <a
-                class="menuitem text"
-                href="#contact"
-                data-scroll-active="contact"
-                >Contact</a
               >
             </v-col>
           </v-row>
@@ -180,8 +181,8 @@ export default Vue.extend({
   text-align: center;
   text-decoration: none;
   color: lightgrey;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Comic Sans", "Comic Sans Regular", "Comic Grande",
+    "Comic Sans Unicode";
   font-weight: bold;
   font-size: 20vw;
 }

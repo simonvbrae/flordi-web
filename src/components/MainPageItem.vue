@@ -1,6 +1,6 @@
 <template>
   <div :id="item_id" class="t px-4">
-    <h1>{{ item_title }}</h1>
+    <h1><a :id="item_id"></a>{{ item_title }}</h1>
     <p>{{ content }}</p>
   </div>
 </template>

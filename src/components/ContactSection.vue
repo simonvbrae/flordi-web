@@ -67,4 +67,8 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.t {
+  margin-bottom: 10vh;
+}
+</style>
