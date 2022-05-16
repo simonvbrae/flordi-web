@@ -28,7 +28,6 @@
                 >Contact</a
               >
             </v-col>
-
             <v-col class="events" cols="2" xs="3">
               <a
                 class="menuitem text"
@@ -78,6 +77,7 @@ import FlordiComponent from "@/components/FlordiComponent.vue";
 import FlordiFooter from "@/components/FlordiFooter.vue";
 import VScrollActive from "v-scroll-active";
 import SplashPageComponent from "@/components/SplashPageComponent.vue";
+import TestAb from "@/components/TestAb.vue";
 
 export default Vue.extend({
   name: "FlordiView",
@@ -155,6 +155,7 @@ export default Vue.extend({
       }
     },
     idk(event: any, currentItem: any, lastActiveItem: any) {
+      console.log("hello");
       console.log(event);
       console.log(currentItem);
       console.log(lastActiveItem);
@@ -229,23 +230,8 @@ export default Vue.extend({
   border-radius: 10px;
 }
 
-.events {
-  min-width: 18vw;
-}
-.mission {
-  min-width: 18vw;
-}
-.studios {
-  min-width: 18vw;
-}
-.contact {
-  min-width: 18vw;
-}
-.active {
-  color: white;
-}
-
 .menuitem {
+  min-width: 18vw;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -254,6 +240,10 @@ export default Vue.extend({
   font-size: 3.7vw;
   display: block;
   padding: 1vh 2vw 1vh 2vw;
+}
+
+.active {
+  color: white;
 }
 
 .menuitem:hover,

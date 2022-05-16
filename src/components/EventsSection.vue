@@ -1,5 +1,6 @@
 <template>
-  <div class="t px-4" :id="section_id">
+  <div class="t px-4">
+    <a id="events"></a>
     <v-container>
       <v-row v-for="e in events" :key="e.title">
         <v-col cols="3"> {{ e.title }} </v-col>

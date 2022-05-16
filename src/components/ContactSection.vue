@@ -1,6 +1,6 @@
 <template>
-  <div class="t px-4" :id="section_id">
-    <h1 class="text mb-3">Contact</h1>
+  <div class="t px-4">
+    <h1 class="text mb-3"><a id="contact"></a>Contact</h1>
     <div style="height: 90vw; width: 100%">
       <l-map
         v-if="showMap"
