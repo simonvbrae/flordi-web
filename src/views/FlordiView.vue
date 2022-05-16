@@ -13,6 +13,7 @@
         :duration="800"
         bezier-easing-value=".5,0,.35,1"
         class="sticky"
+        :class="{ menuWithBg: menuHasBackground }"
       >
         <v-container fluid class="flex-nowrap" justify="center">
           <v-row no-gutters>
@@ -88,6 +89,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      menuHasBackground: false,
       scrollState: 0,
       scrollDistance: 100,
     };
@@ -150,10 +152,6 @@ export default Vue.extend({
             e.preventDefault();
           }
         }
-        // else {
-        //   e.preventDefault();
-        //   this.updateScrollState(-1);
-        // }
       }
     },
     idk(event: any, currentItem: any, lastActiveItem: any) {
@@ -173,10 +171,24 @@ export default Vue.extend({
       window.removeEventListener(i[0], i[1], i[2]);
     }
   },
+  mounted() {
+    window.onscroll = (e) => {
+      // console.log("scrolled");
+      // console.log(this.$data.menuClassName);
+      // this.$data.menuClassName = "hi";
+      // console.log(this.$data.menuClassName);
+      this.$data.menuHasBackground = !(
+        document.body.scrollTop == 0 && document.documentElement.scrollTop == 0
+      );
+    };
+  },
 });
 </script>
 
 <style scoped>
+.menuWithBg {
+  background-color: rgba(23, 87, 157, 0.8);
+}
 .banner {
   text-align: center;
   text-decoration: none;
