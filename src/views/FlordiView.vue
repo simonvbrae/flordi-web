@@ -235,7 +235,11 @@ export default Vue.extend({
 }
 
 .contentDiv {
-  /* margin-top: 20vh; */
+  padding-top: min(7vw, 144px);
+  /* align-content: center;
+  align-self: center;
+  align-items: center;
+  max-width: 10px; */
 }
 
 .parent {
@@ -247,20 +251,23 @@ export default Vue.extend({
 }
 
 .logo {
-  width: 10vw;
+  /* width: 10vw; */
+  width: min(10vw, 105px);
+
   padding: 4px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
 .menuitem {
-  min-width: 18vw;
+  font-size: min(40px, 3.7vw);
+  width: 18vw;
+
   font-weight: bold;
   text-align: center;
   text-decoration: none;
   color: lightgrey;
-  /* font-size: 25px; */
-  font-size: 3.7vw;
+  /* font-size: min(3.7vw, 40dp); */
   display: block;
   /* padding: 1vh 2vw 1vh 2vw; */
 }
@@ -271,6 +278,7 @@ export default Vue.extend({
 
 .menuitem:hover,
 .menuitem:focus {
+  text-decoration: underline;
   color: white;
 }
 
