@@ -9,7 +9,7 @@
       <VScrollActive
         v-on:itemchanged="idk"
         active-class="active"
-        :offset="45"
+        :offset="70"
         :duration="800"
         bezier-easing-value=".5,0,.35,1"
         class="sticky"
@@ -20,38 +20,60 @@
             <v-col cols="2" xs="3">
               <img class="logo" src="@/assets/images/logo_small2.png" />
             </v-col>
-            <v-col class="contact" cols="2" xs="3">
-              <a
-                class="menuitem text"
-                href="#contact"
-                data-scroll-active="contact"
-                >Contact</a
-              >
-            </v-col>
-            <v-col class="events" cols="2" xs="3">
-              <a
-                class="menuitem text"
-                href="#events"
-                data-scroll-active="events"
-                >Events</a
-              >
-            </v-col>
-            <v-col class="mission" cols="2" xs="3">
-              <a
-                class="menuitem text"
-                href="#portfolio"
-                data-scroll-active="portfolio"
-              >
-                Mission</a
-              >
-            </v-col>
-            <v-col class="studios" cols="2" xs="3">
-              <a
-                class="menuitem text"
-                href="#studios"
-                data-scroll-active="studios"
-                >Studio's</a
-              >
+            <v-col cols="10" xs="9">
+              <v-row no-gutters menu-row>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#events"
+                    data-scroll-active="events"
+                    >Events</a
+                  >
+                </v-col>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#mission"
+                    data-scroll-active="mission"
+                    >Mission</a
+                  >
+                </v-col>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#menu"
+                    data-scroll-active="menu"
+                  >
+                    Menu</a
+                  >
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#studio"
+                    data-scroll-active="studio"
+                    >Studio</a
+                  >
+                </v-col>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#info"
+                    data-scroll-active="info"
+                    >Info</a
+                  >
+                </v-col>
+                <v-col cols="4">
+                  <a
+                    class="menuitem text"
+                    href="#jobs"
+                    data-scroll-active="jobs"
+                    >Jobs</a
+                  >
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-container>
@@ -64,7 +86,9 @@
         style="width: 80vw; opacity: 80; fill-opacity: 0"
         src="@/assets/images/flordi_title.png"
       />
-      <h5 class="mt-3 pb-5 slogan text">Een nieuw muziekcafé opening soon!</h5>
+      <h5 class="mt-3 pb-5 slogan text">
+        een nieuw bruisend muziekcafé komt eraan!
+      </h5>
       <FlordiComponent class="text"></FlordiComponent>
     </div>
     <FlordiFooter></FlordiFooter>
@@ -77,7 +101,6 @@ import FlordiComponent from "@/components/FlordiComponent.vue";
 import FlordiFooter from "@/components/FlordiFooter.vue";
 import VScrollActive from "v-scroll-active";
 import SplashPageComponent from "@/components/SplashPageComponent.vue";
-import TestAb from "@/components/TestAb.vue";
 
 export default Vue.extend({
   name: "FlordiView",
@@ -239,7 +262,7 @@ export default Vue.extend({
   /* font-size: 25px; */
   font-size: 3.7vw;
   display: block;
-  padding: 1vh 2vw 1vh 2vw;
+  /* padding: 1vh 2vw 1vh 2vw; */
 }
 
 .active {
