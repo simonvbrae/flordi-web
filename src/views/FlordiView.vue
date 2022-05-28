@@ -7,9 +7,8 @@
     ></SplashPageComponent>
     <div>
       <VScrollActive
-        v-on:itemchanged="idk"
         active-class="active"
-        :offset="70"
+        :offset="scrollActiveOffset"
         :duration="800"
         bezier-easing-value=".5,0,.35,1"
         class="sticky"
@@ -33,9 +32,9 @@
                 <v-col cols="4">
                   <a
                     class="menuitem text"
-                    href="#mission"
-                    data-scroll-active="mission"
-                    >Mission</a
+                    href="#about"
+                    data-scroll-active="about"
+                    >About</a
                   >
                 </v-col>
                 <v-col cols="4">
@@ -60,17 +59,17 @@
                 <v-col cols="4">
                   <a
                     class="menuitem text"
-                    href="#info"
-                    data-scroll-active="info"
-                    >Info</a
+                    href="#jobs"
+                    data-scroll-active="jobs"
+                    >Join Us</a
                   >
                 </v-col>
                 <v-col cols="4">
                   <a
                     class="menuitem text"
-                    href="#jobs"
-                    data-scroll-active="jobs"
-                    >Jobs</a
+                    href="#contact"
+                    data-scroll-active="contact"
+                    >Contact</a
                   >
                 </v-col>
               </v-row>
@@ -80,18 +79,21 @@
       </VScrollActive>
     </div>
     <div class="contentDiv">
-      <div class="pt-2"></div>
       <img
-        class="pt-5"
-        style="width: 80vw; opacity: 80; fill-opacity: 0"
+        style="width: 60vw; opacity: 80; fill-opacity: 0"
         src="@/assets/images/flordi_title.png"
       />
-      <h5 class="mt-3 pb-5 slogan text">
-        een nieuw bruisend muziekcafé komt eraan!
-      </h5>
+      <p class="text slogan" style="height: 100%; font-size: ">
+        A soft and warm breeze that blows us towards a space where connection,
+        authenticity and ethical creative entrepreneurship are paramount. Get in
+        on the act, bounce with us!
+        <br />
+        - Flordi -
+      </p>
+      <hr class="topHr" />
       <FlordiComponent class="text"></FlordiComponent>
+      <FlordiFooter></FlordiFooter>
     </div>
-    <FlordiFooter></FlordiFooter>
   </div>
 </template>
 
@@ -118,8 +120,21 @@ export default Vue.extend({
     };
   },
   computed: {
+    scrollActiveOffset() {
+      let calcWidth = (document.body.clientWidth / 100) * 17;
+      console.log(calcWidth);
+      return calcWidth < 155 ? calcWidth : 155;
+    },
     backgroundImage() {
       return {
+        //rgb(0,95,217)
+        //rgb(93,149,179)
+        //rgb(5,79,171)
+        //rgb(25,136,91)
+        //(rgb(45,217,89)
+        //rgb(23,75,130)
+        //(rgb(23,75,130)
+        //(rgb(239,237,236)
         background: `url(${require("@/assets/images/background.png")}) no-repeat center center fixed`,
         webkitBackgroundSize: "cover",
         mozBackgroundSize: "cover",
@@ -164,25 +179,18 @@ export default Vue.extend({
       let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
       if (scrollKeys.includes(e.keyCode)) {
         e.preventDefault();
-        this.updateScrollState(1);
+        this.updateScrollState(3);
       }
     },
     handleNonKeyboardScroll(e: any) {
       // Prevent keyboard scroll and update scrollState
       if (e.type == "wheel") {
         if (e.wheelDelta < 0) {
-          if (!this.updateScrollState(1)) {
+          if (!this.updateScrollState(3)) {
             e.preventDefault();
           }
         }
       }
-    },
-    idk(event: any, currentItem: any, lastActiveItem: any) {
-      console.log("hello");
-      console.log(event);
-      console.log(currentItem);
-      console.log(lastActiveItem);
-      // here you have access to everything you need regarding that event
     },
   },
   created() {
@@ -224,7 +232,7 @@ export default Vue.extend({
 }
 .slogan {
   color: white;
-  font-size: 4vw;
+  font-size: 2vw;
 }
 
 .sticky {
@@ -235,11 +243,13 @@ export default Vue.extend({
 }
 
 .contentDiv {
-  padding-top: min(7vw, 144px);
-  /* align-content: center;
+  margin: auto;
+  justify-content: center;
+  padding-top: min(15vw, 160px);
+  max-width: 992px;
+  align-content: center;
   align-self: center;
   align-items: center;
-  max-width: 10px; */
 }
 
 .parent {
@@ -278,8 +288,13 @@ export default Vue.extend({
 
 .menuitem:hover,
 .menuitem:focus {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: white;
+}
+
+.topHr {
+  border: 10px solid rgb(45, 217, 89);
+  border-radius: 5px;
 }
 
 html {

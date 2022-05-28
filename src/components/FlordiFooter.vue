@@ -35,7 +35,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <img style="width: 100vw" src="@/assets/images/mascots.png" />
+    <img style="width: 100%" src="@/assets/images/mascots.png" />
   </div>
 </template>
 

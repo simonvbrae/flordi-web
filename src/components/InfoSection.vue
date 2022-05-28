@@ -1,7 +1,10 @@
 <template>
-  <div class="t px-4">
-    <h1 class="text mb-3"><a id="contact"></a>Contact</h1>
-    <div style="height: 90vw; width: 100%">
+  <div :id="section_id" class="t px-4">
+    <h1 class="text mb-3">Contact</h1>
+    <div
+      class="mapDiv"
+      style="height: max(320px, 30vw); width: max(320px, 30vw)"
+    >
       <l-map
         v-if="showMap"
         :zoom="zoom"
@@ -16,6 +19,19 @@
       </l-map>
     </div>
     <h5 class="mt-2 text">Café Flordi - Sint-Salvatorstraat 7, 9000 Gent</h5>
+    <div>
+      Hello there!
+      <ul>
+        <li>Do you want to play on stage?</li>
+        <li>Is there a project you'd like to propose?</li>
+        <li>Or other questions & suggestions?</li>
+      </ul>
+      Come to us and make it happen.
+      <br />
+      Or drop it here below. (Contactfile: Your name, surname, mail address,
+      phone number, the occasion(music, event, question, suggestion, other) Your
+      message)
+    </div>
   </div>
 </template>
 
@@ -31,7 +47,7 @@ L.Icon.Default.mergeOptions({
 });
 
 export default Vue.extend({
-  name: "ContactSection",
+  name: "InfoSection",
   components: {
     LMap,
     LTileLayer,
@@ -70,5 +86,10 @@ export default Vue.extend({
 <style scoped>
 .t {
   margin-bottom: 10vh;
+}
+
+.mapDiv {
+  align-self: center;
+  margin: auto;
 }
 </style>
