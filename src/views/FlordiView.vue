@@ -80,7 +80,14 @@
     </div>
     <div class="contentDiv">
       <img
-        style="width: 60vw; opacity: 80; fill-opacity: 0"
+        style="
+          width: 50vw;
+          opacity: 80;
+          fill-opacity: 0;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        "
         src="@/assets/images/flordi_title.png"
       />
       <p class="text slogan" style="height: 100%; font-size: ">
@@ -232,7 +239,7 @@ export default Vue.extend({
 }
 .slogan {
   color: white;
-  font-size: 2vw;
+  font-size: max(2vw, var(--bs-body-font-size));
 }
 
 .sticky {
@@ -257,13 +264,12 @@ export default Vue.extend({
 }
 
 .front {
+  pointer-events: none;
   z-index: 100;
 }
 
 .logo {
-  /* width: 10vw; */
   width: min(10vw, 105px);
-
   padding: 4px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
@@ -277,24 +283,22 @@ export default Vue.extend({
   text-align: center;
   text-decoration: none;
   color: lightgrey;
-  /* font-size: min(3.7vw, 40dp); */
   display: block;
-  /* padding: 1vh 2vw 1vh 2vw; */
+}
+
+.menuitem:hover,
+.menuitem:focus {
+  color: white;
 }
 
 .active {
   color: white;
 }
 
-.menuitem:hover,
-.menuitem:focus {
-  /* text-decoration: underline; */
-  color: white;
-}
-
 .topHr {
   border: 10px solid rgb(45, 217, 89);
   border-radius: 5px;
+  opacity: 0;
 }
 
 html {

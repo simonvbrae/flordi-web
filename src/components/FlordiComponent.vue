@@ -14,8 +14,8 @@
     <MainPageItem
       item_title="Studio"
       item_id="studio"
-      content="We want out stage to be occupied with crazy ideas being tried out. Therefore, we are building two rehearsal studios of 6 x 5 m right next to the café! We provide a place for you to rehearse and try out. Looking for such a place with your band? Contact us and we'll show you the place!"
-      ><a id="studio"></a><a id="studio"></a
+      content="We want out stage to be occupied with crazy ideas being tried out. Therefore, we are building two rehearsal studios of 6 x 5 m right next to the café. We provide a place for you to rehearse and try out. Looking for such a place with your band? Contact us and we'll show you the place!"
+      ><a id="studio"></a
     ></MainPageItem>
     <JobSection section_id="jobs"></JobSection>
     <InfoSection section_id="contact"></InfoSection>

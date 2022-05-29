@@ -19,18 +19,22 @@
       </l-map>
     </div>
     <h5 class="mt-2 text">Café Flordi - Sint-Salvatorstraat 7, 9000 Gent</h5>
-    <div>
-      Hello there!
-      <ul>
-        <li>Do you want to play on stage?</li>
-        <li>Is there a project you'd like to propose?</li>
-        <li>Or other questions & suggestions?</li>
-      </ul>
-      Come to us and make it happen.
-      <br />
-      Or drop it here below. (Contactfile: Your name, surname, mail address,
-      phone number, the occasion(music, event, question, suggestion, other) Your
-      message)
+    <div style="text-align: center">
+      <div style="display: inline-block; text-align: left">
+        Hello there!
+        <ul>
+          <li>Do you want to play on stage?</li>
+          <li>Is there a project you'd like to propose?</li>
+          <li>Other questions & suggestions?</li>
+        </ul>
+        Come visit the café and make it happen or
+        <a
+          href="mailto:info@flordi.be"
+          target="_blank"
+          style="color: rgb(217, 217, 217)"
+          >send us an email</a
+        >.
+      </div>
     </div>
   </div>
 </template>
@@ -91,5 +95,19 @@ export default Vue.extend({
 .mapDiv {
   align-self: center;
   margin: auto;
+}
+
+.content {
+  text-align: left;
+}
+ul {
+  position: relative;
+  list-style: none;
+}
+
+li::before {
+  content: "➔";
+  position: absolute;
+  left: 0;
 }
 </style>

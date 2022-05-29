@@ -1,14 +1,14 @@
 <template>
   <div :id="section_id" class="t px-4">
     <h1>Menu</h1>
-    <p>
+    <p class="content">
       Vegan menu We work together with local organic and biodynamic farmers who
       are working hard on their fields to provide with amazing organic
       vegetables for us. Real food, with deep colors. Our menu is plant based
       and evolves with the seasons. We follow the rhythm of nature and that of
       small-scaled farmers. Good food for body, soul and mind. Local breweries
       We promote and support local small-scaled breweries. Try out the new ones
-      our enjoy the old Belgian recipes, it’s up to you!
+      our enjoy the old Belgian recipes, it's up to you!
     </p>
   </div>
 </template>
@@ -28,5 +28,9 @@ export default Vue.extend({
 <style scoped>
 .t {
   margin-bottom: 10vh;
+}
+
+.content {
+  text-align: left;
 }
 </style>

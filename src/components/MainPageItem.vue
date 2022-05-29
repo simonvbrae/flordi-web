@@ -1,7 +1,7 @@
 <template>
   <div :id="item_id" class="t px-4">
     <h1>{{ item_title }}</h1>
-    <p>{{ content }}</p>
+    <p class="content">{{ content }}</p>
   </div>
 </template>
 
@@ -22,5 +22,8 @@ export default Vue.extend({
 <style scoped>
 .t {
   margin-bottom: 10vh;
+}
+.content {
+  text-align: left;
 }
 </style>
