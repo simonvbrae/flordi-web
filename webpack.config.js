@@ -1,5 +1,5 @@
 // webpack.config.js
-var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   // other options...
@@ -9,18 +9,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'vue-style-loader'
+          process.env.NODE_ENV !== "production"
+            ? "vue-style-loader"
             : MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
-    ]
+          "css-loader",
+        ],
+      },
+    ],
   },
   plugins: [
     // ... Vue Loader plugin omitted
     new MiniCssExtractPlugin({
-      filename: 'style.css'
-    })
-  ]
-}
+      filename: "style.css",
+    }),
+  ],
+};

@@ -10,12 +10,6 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/FlordiView.vue"),
   },
-  {
-    path: "/flordi",
-    name: "flordi",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/FlordiView.vue"),
-  },
 ];
 
 const router = new VueRouter({
