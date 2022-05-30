@@ -1,18 +1,16 @@
 <template>
   <div
-    id="over"
-    style="position:absolute, width:100vw, height:100vh, display: flex, justify-content: center"
+    :class="{ loader: true, fillParent: true }"
+    :style="{ ...backgroundImage, ...fadeValue }"
   >
-    <div :class="{ loader: true, fillParent: true }" :style="{ ...fadeValue }">
-      <img
-        :src="image"
-        :class="{
-          miniLoader: true,
-          fadein: true,
-          fillParent: true,
-        }"
-      />
-    </div>
+    <div
+      :class="{
+        miniLoader: true,
+        fadein: true,
+        fillParent: true,
+      }"
+      :style="poster"
+    ></div>
   </div>
 </template>
 
@@ -30,9 +28,6 @@ export default {
   computed: {
     fadeValue: function () {
       return {opacity: `${100-this.scrollTransformation(this.scrollState)}%`, display: this.scrollTransformation(this.scrollState)>=100 ? "none" : ""};
-    },
-    image() {
-      return `${require("@/assets/images/splash.png")}`;
     },
     // computed property that auto-updates when the prop changes
     poster() {
@@ -67,23 +62,18 @@ export default {
   /* position: "absolute"; */
   /* top: 0;
   left: 0; */
-  /* height: 100%; */
-  /* width: 100%; */
+  height: 100%;
+  width: 100%;
 }
-#over img {
-  margin-left: auto;
-  margin-right: auto;
-  /* display: block; */
-}
+
 .loader {
-  /* background-color: #63ab97; */
+  background-color: #63ab97;
   color: white;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  /* position: fixed; */
+  /* display: block;
+  position: fixed; */
   font-size: 32px;
-  align-items: center;
   /* bottom: 0;
   left: 0;
   right: 0;
@@ -95,10 +85,8 @@ export default {
 }
 
 .miniLoader {
-  width: min(100vw, 100vh/733 * 602);
-  height: min(100vw/602 * 733, 100vh);
-  display: flex;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
   /* bottom: 0;
   left: 0;
   right: 0;

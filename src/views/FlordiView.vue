@@ -2,11 +2,13 @@
   <div class="parent" :style="backgroundImage">
     <SplashPageComponent
       class="front"
+      :class="{ invisible: splashImageIsHidden }"
       :scrollState="scrollState"
       t
     ></SplashPageComponent>
     <div>
       <VScrollActive
+        @scroll="onScroll"
         active-class="active"
         :offset="scrollActiveOffset"
         :duration="800"
@@ -121,9 +123,11 @@ export default Vue.extend({
   },
   data() {
     return {
+      splashImageIsHidden: false,
       menuHasBackground: false,
       scrollState: 0,
       scrollDistance: 100,
+      windowHeight: 0,
     };
   },
   computed: {
@@ -161,6 +165,24 @@ export default Vue.extend({
       this.scrollState += v;
       return false;
     },
+    handleKeyboardScroll(e: any) {
+      // Prevent keyboard scroll
+      let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
+      if (scrollKeys.includes(e.keyCode)) {
+        e.preventDefault();
+        this.updateScrollState(3);
+      }
+    },
+    handleNonKeyboardScroll(e: any) {
+      // Prevent keyboard scroll and update scrollState
+      if (e.type == "wheel") {
+        if (e.wheelDelta < 0) {
+          if (!this.updateScrollState(3)) {
+            e.preventDefault();
+          }
+        }
+      }
+    },
     getListeners() {
       const listeners: Array<[string, any, Record<string, unknown>?]> = [
         ["keydown", this.handleKeyboardScroll],
@@ -181,45 +203,32 @@ export default Vue.extend({
       ];
       return listeners;
     },
-    handleKeyboardScroll(e: any) {
-      // Prevent keyboard scroll
-      let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
-      if (scrollKeys.includes(e.keyCode)) {
-        e.preventDefault();
-        this.updateScrollState(3);
-      }
-    },
-    handleNonKeyboardScroll(e: any) {
-      // Prevent keyboard scroll and update scrollState
-      if (e.type == "wheel") {
-        if (e.wheelDelta < 0) {
-          if (!this.updateScrollState(3)) {
-            e.preventDefault();
-          }
-        }
-      }
-    },
   },
   created() {
     for (let i of this.getListeners()) {
-      window.addEventListener(i[0], i[1], i[2]);
+      // window.addEventListener(i[0], i[1], i[2]);
     }
   },
   destroyed() {
     for (let i of this.getListeners()) {
-      window.removeEventListener(i[0], i[1], i[2]);
+      // window.removeEventListener(i[0], i[1], i[2]);
     }
   },
   mounted() {
+    this.$data.windowHeight = window.innerHeight;
+
     window.onscroll = (e) => {
-      // console.log("scrolled");
-      // console.log(this.$data.menuClassName);
-      // this.$data.menuClassName = "hi";
-      // console.log(this.$data.menuClassName);
-      this.$data.menuHasBackground = !(
-        document.body.scrollTop == 0 && document.documentElement.scrollTop == 0
-      );
+      if (
+        document.body.scrollTop > this.$data.windowHeight ||
+        document.documentElement.scrollTop > this.$data.windowHeight
+      ) {
+        this.$data.menuHasBackground = true;
+        this.$data.splashImageIsHidden = true;
+      }
     };
+    window.addEventListener("resize", () => {
+      this.$data.windowHeight = window.innerHeight;
+    });
   },
 });
 </script>
@@ -243,9 +252,10 @@ export default Vue.extend({
 }
 
 .sticky {
-  z-index: 10;
+  /* z-index: 10; */
   position: fixed;
-  top: 1;
+  /* top: 1; */
+  bottom: 1;
   width: 100%;
 }
 
@@ -299,6 +309,10 @@ export default Vue.extend({
   border: 10px solid rgb(45, 217, 89);
   border-radius: 5px;
   opacity: 0;
+}
+
+.invisible {
+  display: none;
 }
 
 html {
