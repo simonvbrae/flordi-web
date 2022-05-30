@@ -1,27 +1,11 @@
 <template>
-  <div :id="section_id" class="t px-4">
-    <h1 class="text mb-3">Contact</h1>
-    <div
-      class="mapDiv"
-      style="height: max(320px, 30vw); width: max(320px, 30vw)"
-    >
-      <l-map
-        v-if="showMap"
-        :zoom="zoom"
-        :center="center"
-        :options="mapOptions"
-        style="height: 100%; z-index: 1"
-        @update:center="centerUpdate"
-        @update:zoom="zoomUpdate"
-      >
-        <l-tile-layer :url="url" :attribution="attribution" />
-        <l-marker :lat-lng="markerLocation" />
-      </l-map>
-    </div>
-    <h5 class="mt-2 text">Café Flordi - Sint-Salvatorstraat 7, 9000 Gent</h5>
+  <div :id="section_id" class="t px-4" style="min-height: 25vh">
+    <h1 class="text mb-3" style="color: rgb(250, 210, 001); font-weight: bold">
+      Contact
+    </h1>
     <div style="text-align: center">
       <div style="display: inline-block; text-align: left">
-        Hello there!
+        <b>Hello there!</b>
         <ul>
           <li>Do you want to play on stage?</li>
           <li>Is there a project you'd like to propose?</li>
@@ -34,8 +18,28 @@
           style="color: rgb(217, 217, 217)"
           >send us an email</a
         >.
+        <br />
+        <br />
       </div>
     </div>
+    <div
+      class="mapDiv"
+      style="height: max(320px, 30vw); width: max(320px, 30vw)"
+    >
+      <l-map
+        v-if="showMap"
+        :zoom="zoom"
+        :center="center"
+        :options="mapOptions"
+        style="height: 100%; z-index: 0"
+        @update:center="centerUpdate"
+        @update:zoom="zoomUpdate"
+      >
+        <l-tile-layer :url="url" :attribution="attribution" />
+        <l-marker :lat-lng="markerLocation" />
+      </l-map>
+    </div>
+    <h5 class="mt-2 text">Café Flordi - Sint-Salvatorstraat 7, 9000 Gent</h5>
   </div>
 </template>
 

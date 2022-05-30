@@ -1,7 +1,9 @@
 <template>
-  <div :id="section_id" class="t px-4 mx-100">
-    <h1 class="text mb-3">Events</h1>
-    <p class="text">An eager stage awaits you... in café Flordi</p>
+  <div :id="section_id" class="t px-4 mx-100" style="min-height: 25vh">
+    <h1 class="text mb-3" style="color: rgb(250, 210, 001); font-weight: bold">
+      Events
+    </h1>
+    <p class="blockText">An eager stage awaits you... in café Flordi</p>
     <v-container>
       <v-row v-for="e in events" :key="e.title">
         <EventCard

@@ -1,6 +1,8 @@
 <template>
   <div>
+    <hr />
     <EventsSection section_id="events"></EventsSection>
+    <hr />
     <MainPageItem
       item_title="About"
       item_id="about"
@@ -10,14 +12,18 @@
       Flordi café means sharing the joy of life, to dance, eat and drink together."
       ><a id="mission"></a><a id="mission"></a
     ></MainPageItem>
+    <hr />
     <MenuSection section_id="menu"></MenuSection>
+    <hr />
     <MainPageItem
       item_title="Studio"
       item_id="studio"
-      content="We want out stage to be occupied with crazy ideas being tried out. Therefore, we are building two rehearsal studios of 6 x 5 m right next to the café. We provide a place for you to rehearse and try out. Looking for such a place with your band? Contact us and we'll show you the place!"
+      content="We want our stage to be occupied with crazy ideas being tried out. Therefore, we are building two rehearsal studios of 6 x 5 m right next to the café. We provide a place for you to rehearse and try out. Looking for such a place with your band? Contact us and we'll show you the place!"
       ><a id="studio"></a
     ></MainPageItem>
+    <hr />
     <JobSection section_id="jobs"></JobSection>
+    <hr />
     <InfoSection section_id="contact"></InfoSection>
   </div>
 </template>

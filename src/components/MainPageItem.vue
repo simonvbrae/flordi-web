@@ -1,6 +1,8 @@
 <template>
-  <div :id="item_id" class="t px-4">
-    <h1>{{ item_title }}</h1>
+  <div :id="item_id" class="t px-4" style="min-height: 25vh">
+    <h1 style="color: rgb(250, 210, 001); font-weight: bold">
+      {{ item_title }}
+    </h1>
     <p class="content">{{ content }}</p>
   </div>
 </template>

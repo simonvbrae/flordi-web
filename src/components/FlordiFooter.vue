@@ -4,8 +4,8 @@
       <v-row>
         <v-col md="12">
           <div>
-            <strong>Flordi</strong><br />Muziek en danscafé.<br />
-            Opening soon.
+            <b>Café Flordi</b><br />Music café | Vegan food<br />
+            Opening soon!
           </div>
           <div class="social">
             <a href="https://www.facebook.com/cafeflordi/" target="_blank"
@@ -31,7 +31,6 @@
                 ></path></svg
             ></a>
           </div>
-          <p style="font-size: 10px">Idee? Laat het ons weten!</p>
         </v-col>
       </v-row>
     </v-container>

@@ -8,7 +8,6 @@
     ></SplashPageComponent>
     <div>
       <VScrollActive
-        @scroll="onScroll"
         active-class="active"
         :offset="scrollActiveOffset"
         :duration="800"
@@ -16,10 +15,21 @@
         class="sticky"
         :class="{ menuWithBg: menuHasBackground }"
       >
-        <v-container fluid class="flex-nowrap" justify="center">
+        <v-container
+          fluid
+          class="flex-nowrap"
+          justify="center"
+          style="margin-top: 0"
+        >
           <v-row no-gutters>
             <v-col cols="2" xs="3">
-              <img class="logo" src="@/assets/images/logo_small2.png" />
+              <a @onclick="scrollToTop">
+                <img
+                  @onclick="scrollToTop"
+                  class="logo"
+                  src="@/assets/images/logo_small2.png"
+                />
+              </a>
             </v-col>
             <v-col cols="10" xs="9">
               <v-row no-gutters menu-row>
@@ -83,21 +93,22 @@
     <div class="contentDiv">
       <img
         style="
-          width: 50vw;
+          width: 30vw;
           opacity: 80;
           fill-opacity: 0;
           display: block;
           margin-left: auto;
           margin-right: auto;
+          margin-bottom: 25px;
+          margin-top: 25px;
         "
         src="@/assets/images/flordi_title.png"
       />
-      <p class="text slogan" style="height: 100%; font-size: ">
-        A soft and warm breeze that blows us towards a space where connection,
-        authenticity and ethical creative entrepreneurship are paramount. Get in
-        on the act, bounce with us!
+      <p class="text slogan" style="height: 100%">
+        A soft and warm breeze blows us towards a space where connection,
+        authenticity and ethical creative entrepreneurship are paramount.
         <br />
-        - Flordi -
+        Get in on the act, bounce with us!
       </p>
       <hr class="topHr" />
       <FlordiComponent class="text"></FlordiComponent>
@@ -138,14 +149,14 @@ export default Vue.extend({
     },
     backgroundImage() {
       return {
-        //rgb(0,95,217)
-        //rgb(93,149,179)
-        //rgb(5,79,171)
-        //rgb(25,136,91)
-        //(rgb(45,217,89)
-        //rgb(23,75,130)
-        //(rgb(23,75,130)
-        //(rgb(239,237,236)
+        //rgb(0,95,217),
+        //rgb(93,149,179),
+        //rgb(5,79,171),
+        //rgb(25,136,91),
+        //(rgb(45,217,89),
+        //rgb(23,75,130),
+        //(rgb(23,75,130),
+        // background-color: rgb(239,237,236),
         background: `url(${require("@/assets/images/background.png")}) no-repeat center center fixed`,
         webkitBackgroundSize: "cover",
         mozBackgroundSize: "cover",
@@ -155,6 +166,10 @@ export default Vue.extend({
     },
   },
   methods: {
+    scrollToTop() {
+      console.log("kkkk");
+      window.scrollTo(0, 0);
+    },
     updateScrollState(v: number): boolean {
       if (
         this.scrollState + v < 0 ||
@@ -235,7 +250,7 @@ export default Vue.extend({
 
 <style scoped>
 .menuWithBg {
-  background-color: rgba(23, 87, 157, 0.8);
+  background-color: rgba(23, 87, 200, 0.4);
 }
 .banner {
   text-align: center;
@@ -246,15 +261,21 @@ export default Vue.extend({
   font-weight: bold;
   font-size: 20vw;
 }
+.text {
+  font-family: Calibri, sans-serif;
+  /* font-family: "Comic Sans", "Comic Sans Regular", "Comic Grande",
+  "Comic Sans Unicode"; */
+  color: white;
+}
 .slogan {
   color: white;
   font-size: max(2vw, var(--bs-body-font-size));
+  font-style: Italic;
 }
 
 .sticky {
-  /* z-index: 10; */
+  z-index: 10;
   position: fixed;
-  /* top: 1; */
   bottom: 1;
   width: 100%;
 }
@@ -288,21 +309,28 @@ export default Vue.extend({
 .menuitem {
   font-size: min(40px, 3.7vw);
   width: 18vw;
-
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  color: lightgrey;
+  color: rgb(250, 210, 001);
   display: block;
 }
 
 .menuitem:hover,
 .menuitem:focus {
-  color: white;
+  /* color: rgb(210, 180, 001); */
+  border-bottom: 2px solid;
+  /* border-left: 2px solid;
+  border-right: 2px solid; */
+  /* text-decoration: underline; */
 }
 
 .active {
-  color: white;
+  /* color: rgb(210, 180, 001); */
+  border-bottom: 2px solid;
+  /* border-left: 2px solid;
+  border-right: 2px solid; */
+  /* text-decoration: underline; */
 }
 
 .topHr {

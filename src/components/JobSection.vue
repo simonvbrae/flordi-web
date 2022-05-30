@@ -1,6 +1,6 @@
 <template>
-  <div :id="section_id" class="t px-4">
-    <h1>Join Us</h1>
+  <div :id="section_id" class="t px-4" style="min-height: 25vh">
+    <h1 style="color: rgb(250, 210, 001); font-weight: bold">Join Us</h1>
     <div style="text-align: center">
       <div style="display: inline-block; text-align: left">
         Our cooperative dream is growing faster than a speeding bullet. Do you:
