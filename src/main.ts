@@ -15,7 +15,7 @@ import "leaflet/dist/leaflet.css";
 
 import "./assets/css/main.css";
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(VueScrollactive).use(vuetify).use(BootstrapVue).use(IconsPlugin);
@@ -24,5 +24,4 @@ new Vue({
   router,
   store,
   render: (h) => h(App),
-  mounted: () => document.dispatchEvent(new Event("x-app-rendered")),
 }).$mount("#app");
