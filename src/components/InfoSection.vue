@@ -1,8 +1,9 @@
 <template>
   <div :id="section_id" class="t px-4" style="min-height: 25vh">
-    <h1 class="text mb-3" style="color: rgb(250, 210, 001); font-weight: bold">
-      Contact
-    </h1>
+    <img
+      style="width: 30vw; max-width: 200px; margin-bottom: 10px"
+      src="@/assets/images/title_contact.png"
+    />
     <div style="text-align: center">
       <div style="display: inline-block; text-align: left">
         <b>Hello there!</b>
@@ -12,10 +13,7 @@
           <li>Other questions & suggestions?</li>
         </ul>
         Come visit the café and make it happen or
-        <a
-          href="mailto:info@flordi.be"
-          target="_blank"
-          style="color: rgb(217, 217, 217)"
+        <a class="blockURL" href="mailto:info@flordi.be" target="_blank"
           >send us an email</a
         >.
         <br />

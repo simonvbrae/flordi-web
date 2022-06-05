@@ -2,7 +2,7 @@
   <div class="parent" :style="backgroundImage">
     <SplashPageComponent
       class="front"
-      :class="{ invisible: splashImageIsHidden }"
+      :class="{ invisible: hideSplashImage }"
       :scrollState="scrollState"
       t
     ></SplashPageComponent>
@@ -14,6 +14,7 @@
         bezier-easing-value=".5,0,.35,1"
         class="sticky"
         :class="{ menuWithBg: menuHasBackground }"
+        style="margin-top: -5px; margin-bottom: -10px"
       >
         <v-container
           fluid
@@ -23,12 +24,8 @@
         >
           <v-row no-gutters>
             <v-col cols="2" xs="3">
-              <a @onclick="scrollToTop">
-                <img
-                  @onclick="scrollToTop"
-                  class="logo"
-                  src="@/assets/images/logo_small2.png"
-                />
+              <a href="#">
+                <img class="logo" src="@/assets/images/logo_small2.png" />
               </a>
             </v-col>
             <v-col cols="10" xs="9">
@@ -38,16 +35,20 @@
                     class="menuitem text"
                     href="#events"
                     data-scroll-active="events"
-                    >Events</a
-                  >
+                    ><img
+                      style="width: 10vw"
+                      src="@/assets/images/title_events.png"
+                  /></a>
                 </v-col>
                 <v-col cols="4">
                   <a
                     class="menuitem text"
                     href="#about"
-                    data-scroll-active="about"
-                    >About</a
-                  >
+                    data-scroll-active="mission"
+                    ><img
+                      style="width: 10vw"
+                      src="@/assets/images/title_about.png"
+                  /></a>
                 </v-col>
                 <v-col cols="4">
                   <a
@@ -55,8 +56,10 @@
                     href="#menu"
                     data-scroll-active="menu"
                   >
-                    Menu</a
-                  >
+                    <img
+                      style="width: 8vw"
+                      src="@/assets/images/title_menu.png"
+                  /></a>
                 </v-col>
               </v-row>
               <v-row no-gutters>
@@ -65,24 +68,30 @@
                     class="menuitem text"
                     href="#studio"
                     data-scroll-active="studio"
-                    >Studio</a
-                  >
+                    ><img
+                      style="width: 10vw"
+                      src="@/assets/images/title_studio.png"
+                  /></a>
                 </v-col>
                 <v-col cols="4">
                   <a
                     class="menuitem text"
                     href="#jobs"
                     data-scroll-active="jobs"
-                    >Join Us</a
-                  >
+                    ><img
+                      style="width: 10vw"
+                      src="@/assets/images/title_jobs.png"
+                  /></a>
                 </v-col>
                 <v-col cols="4">
                   <a
                     class="menuitem text"
                     href="#contact"
                     data-scroll-active="contact"
-                    >Contact</a
-                  >
+                    ><img
+                      style="width: 12vw"
+                      src="@/assets/images/title_contact.png"
+                  /></a>
                 </v-col>
               </v-row>
             </v-col>
@@ -94,6 +103,7 @@
       <img
         style="
           width: 30vw;
+          max-width: 200px;
           opacity: 80;
           fill-opacity: 0;
           display: block;
@@ -102,7 +112,7 @@
           margin-bottom: 25px;
           margin-top: 25px;
         "
-        src="@/assets/images/flordi_title.png"
+        src="@/assets/images/flordi_banner.png"
       />
       <p class="text slogan" style="height: 100%">
         A soft and warm breeze blows us towards a space where connection,
@@ -134,7 +144,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      splashImageIsHidden: false,
+      hideSplashImage: false,
       menuHasBackground: false,
       scrollState: 0,
       scrollDistance: 100,
@@ -143,20 +153,11 @@ export default Vue.extend({
   },
   computed: {
     scrollActiveOffset() {
-      let calcWidth = (document.body.clientWidth / 100) * 17;
-      console.log(calcWidth);
-      return calcWidth < 155 ? calcWidth : 155;
+      let calcWidth = (document.body.clientWidth / 100) * 15;
+      return Math.min(calcWidth, 145);
     },
     backgroundImage() {
       return {
-        //rgb(0,95,217),
-        //rgb(93,149,179),
-        //rgb(5,79,171),
-        //rgb(25,136,91),
-        //(rgb(45,217,89),
-        //rgb(23,75,130),
-        //(rgb(23,75,130),
-        // background-color: rgb(239,237,236),
         background: `url(${require("@/assets/images/background.png")}) no-repeat center center fixed`,
         webkitBackgroundSize: "cover",
         mozBackgroundSize: "cover",
@@ -165,70 +166,7 @@ export default Vue.extend({
       };
     },
   },
-  methods: {
-    scrollToTop() {
-      console.log("kkkk");
-      window.scrollTo(0, 0);
-    },
-    updateScrollState(v: number): boolean {
-      if (
-        this.scrollState + v < 0 ||
-        this.scrollState + v > this.$data.scrollDistance
-      ) {
-        return true;
-      }
-      this.scrollState += v;
-      return false;
-    },
-    handleKeyboardScroll(e: any) {
-      // Prevent keyboard scroll
-      let scrollKeys = [32, 33, 34, 35, 37, 38, 39, 40];
-      if (scrollKeys.includes(e.keyCode)) {
-        e.preventDefault();
-        this.updateScrollState(3);
-      }
-    },
-    handleNonKeyboardScroll(e: any) {
-      // Prevent keyboard scroll and update scrollState
-      if (e.type == "wheel") {
-        if (e.wheelDelta < 0) {
-          if (!this.updateScrollState(3)) {
-            e.preventDefault();
-          }
-        }
-      }
-    },
-    getListeners() {
-      const listeners: Array<[string, any, Record<string, unknown>?]> = [
-        ["keydown", this.handleKeyboardScroll],
-        [
-          "touchmove",
-          this.handleNonKeyboardScroll,
-          {
-            passive: false,
-          },
-        ],
-        [
-          "wheel",
-          this.handleNonKeyboardScroll,
-          {
-            passive: false,
-          },
-        ],
-      ];
-      return listeners;
-    },
-  },
-  created() {
-    for (let i of this.getListeners()) {
-      // window.addEventListener(i[0], i[1], i[2]);
-    }
-  },
-  destroyed() {
-    for (let i of this.getListeners()) {
-      // window.removeEventListener(i[0], i[1], i[2]);
-    }
-  },
+  methods: {},
   mounted() {
     this.$data.windowHeight = window.innerHeight;
 
@@ -237,8 +175,8 @@ export default Vue.extend({
         document.body.scrollTop > this.$data.windowHeight ||
         document.documentElement.scrollTop > this.$data.windowHeight
       ) {
+        this.$data.hideSplashImage = true;
         this.$data.menuHasBackground = true;
-        this.$data.splashImageIsHidden = true;
       }
     };
     window.addEventListener("resize", () => {
@@ -249,9 +187,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.menuWithBg {
-  background-color: rgba(23, 87, 200, 0.4);
-}
 .banner {
   text-align: center;
   text-decoration: none;
@@ -261,37 +196,11 @@ export default Vue.extend({
   font-weight: bold;
   font-size: 20vw;
 }
-.text {
-  font-family: Calibri, sans-serif;
-  /* font-family: "Comic Sans", "Comic Sans Regular", "Comic Grande",
-  "Comic Sans Unicode"; */
-  color: white;
-}
+
 .slogan {
   color: white;
   font-size: max(2vw, var(--bs-body-font-size));
   font-style: Italic;
-}
-
-.sticky {
-  z-index: 10;
-  position: fixed;
-  bottom: 1;
-  width: 100%;
-}
-
-.contentDiv {
-  margin: auto;
-  justify-content: center;
-  padding-top: min(15vw, 160px);
-  max-width: 992px;
-  align-content: center;
-  align-self: center;
-  align-items: center;
-}
-
-.parent {
-  overflow: auto;
 }
 
 .front {
@@ -299,51 +208,7 @@ export default Vue.extend({
   z-index: 100;
 }
 
-.logo {
-  width: min(10vw, 105px);
-  padding: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-}
-
-.menuitem {
-  font-size: min(40px, 3.7vw);
-  width: 18vw;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  color: rgb(250, 210, 001);
-  display: block;
-}
-
-.menuitem:hover,
-.menuitem:focus {
-  /* color: rgb(210, 180, 001); */
-  border-bottom: 2px solid;
-  /* border-left: 2px solid;
-  border-right: 2px solid; */
-  /* text-decoration: underline; */
-}
-
-.active {
-  /* color: rgb(210, 180, 001); */
-  border-bottom: 2px solid;
-  /* border-left: 2px solid;
-  border-right: 2px solid; */
-  /* text-decoration: underline; */
-}
-
-.topHr {
-  border: 10px solid rgb(45, 217, 89);
-  border-radius: 5px;
-  opacity: 0;
-}
-
 .invisible {
   display: none;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 </style>

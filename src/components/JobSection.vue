@@ -1,15 +1,18 @@
 <template>
   <div :id="section_id" class="t px-4" style="min-height: 25vh">
-    <h1 style="color: rgb(250, 210, 001); font-weight: bold">Join Us</h1>
+    <img
+      style="width: 30vw; max-width: 200px; margin-bottom: 10px"
+      src="@/assets/images/title_jobs.png"
+    />
     <div style="text-align: center">
       <div style="display: inline-block; text-align: left">
         Our cooperative dream is growing faster than a speeding bullet. Do you:
         <ul>
           <li>
-            want to contribute your energy in a local sustainable network?
+            Want to contribute your energy in a local sustainable network?
           </li>
           <li>
-            want to be part of our community, that makes the world a better
+            Want to be part of our community, that makes the world a better
             place?
           </li>
           <li>Do you have great ideas that should come alive?</li>
@@ -22,7 +25,13 @@
           <li>Students & flexi's in the café</li>
           <li>Permanent employee in the café</li>
           <li>Volunteers</li>
-          <li>Social entrepreneurs</li>
+          <li><a class="blockURL" href="vacancy">Social entrepreneurs</a></li>
+          <li>
+            IT enthousiasts:
+            <a class="blockURL" href="https://github.com/simonvbrae/flordi-web"
+              >our website is open source!</a
+            >
+          </li>
         </ul>
       </div>
     </div>

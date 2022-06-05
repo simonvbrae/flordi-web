@@ -1,8 +1,6 @@
 .text {
   font-family: Calibri, sans-serif;
-  /* font-family: "Comic Sans", "Comic Sans Regular", "Comic Grande",
-  "Comic Sans Unicode"; */
-color: white;
+  color: white;
 }
 
 .blockText {
@@ -18,4 +16,10 @@ html {
 body {
   overflow-x: hidden;
   width: 100%
+}
+
+/**/
+.blockURL:hover,
+.blockURL {
+  color: rgb(217, 217, 217)
 }

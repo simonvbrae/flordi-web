@@ -1,8 +1,9 @@
 <template>
   <div :id="section_id" class="t px-4 mx-100" style="min-height: 25vh">
-    <h1 class="text mb-3" style="color: rgb(250, 210, 001); font-weight: bold">
-      Events
-    </h1>
+    <img
+      style="width: 30vw; max-width: 200px; margin-bottom: 10px"
+      src="@/assets/images/title_events.png"
+    />
     <p class="blockText">An eager stage awaits you... in café Flordi</p>
     <v-container>
       <v-row v-for="e in events" :key="e.title">
