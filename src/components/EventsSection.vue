@@ -10,13 +10,12 @@
       src="@/assets/images/title_events.png"
     />
     <p class="blockText">
-      Before opening our café we're already organising open jam sessions. Free
-      for anyone to come by and experiment.
+      Before the café opens, we're already organising jam sessions!
     </p>
     <div class="embed-responsive embed-responsive-16by9 z-depth-1">
       <iframe
         class="embed-responsive-item .hoverable"
-        src="https://www.youtube.com/embed/xNuJgch1OWQ"
+        src="https://www.youtube.com/embed/FDmPGy4IkFE"
         allowfullscreen
         :style="{ height: videoHeight + 'px', width: '100%' }"
       ></iframe>
@@ -63,7 +62,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    videoHeight() {
+    videoHeight(): number {
       return (this.$data.clientWidth * 9) / 16;
     },
   },
