@@ -24,7 +24,7 @@
             </v-col>
             <v-col cols="10" xs="9">
               <v-row no-gutters menu-row>
-                <v-col cols="2"> </v-col>
+                <v-col cols="1"> </v-col>
                 <v-col cols="6">
                   <a class="menuitem" href="/" data-scroll-active="mission"
                     ><img
@@ -32,7 +32,7 @@
                       src="@/assets/images/flordi_banner.png"
                   /></a>
                 </v-col>
-                <v-col cols="4"> </v-col>
+                <v-col cols="5"> </v-col>
               </v-row>
             </v-col>
           </v-row>
@@ -41,7 +41,7 @@
     </div>
     <div class="contentDiv">
       <hr class="topHr" />
-      <pdf src="Grunling_vacature.pdf"></pdf>
+      <pdf src="Grunling_vacancy_en.pdf"></pdf>
       <FlordiFooter></FlordiFooter>
     </div>
   </div>

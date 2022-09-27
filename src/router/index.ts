@@ -11,10 +11,16 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "about" */ "../views/FlordiView.vue"),
   },
   {
-    path: "/vacancy",
+    path: "/vacancy/",
     name: "vacancy",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/VacancyView.vue"),
+  },
+  {
+    path: "*",
+    name: "catchAll",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/FlordiView.vue"),
   },
 ];
 

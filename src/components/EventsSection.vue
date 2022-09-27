@@ -1,10 +1,27 @@
 <template>
-  <div :id="section_id" class="t px-4 mx-100" style="min-height: 25vh">
+  <div
+    ref="widthRefElement"
+    :id="section_id"
+    class="t px-4 mx-100"
+    style="min-height: 25vh"
+  >
     <img
       style="width: 30vw; max-width: 200px; margin-bottom: 10px"
       src="@/assets/images/title_events.png"
     />
-    <p class="blockText">An eager stage awaits you... in café Flordi</p>
+    <p class="blockText">
+      Before opening our café we're already organising open jam sessions. Free
+      for anyone to come by and experiment.
+    </p>
+    <div class="embed-responsive embed-responsive-16by9 z-depth-1">
+      <iframe
+        class="embed-responsive-item .hoverable"
+        src="https://www.youtube.com/embed/xNuJgch1OWQ"
+        allowfullscreen
+        :style="{ height: videoHeight + 'px', width: '100%' }"
+      ></iframe>
+    </div>
+
     <v-container>
       <v-row v-for="e in events" :key="e.title">
         <EventCard
@@ -33,6 +50,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      clientWidth: 0,
       events: [
         {
           title: "Flordi werkweekend",
@@ -43,6 +61,22 @@ export default Vue.extend({
         },
       ],
     };
+  },
+  computed: {
+    videoHeight() {
+      return (this.$data.clientWidth * 9) / 16;
+    },
+  },
+  mounted() {
+    this.$data.clientWidth = (
+      this.$refs["widthRefElement"] as HTMLElement
+    ).clientWidth;
+
+    window.addEventListener("resize", () => {
+      this.$data.clientWidth = (
+        this.$refs["widthRefElement"] as HTMLElement
+      ).clientWidth;
+    });
   },
 });
 </script>

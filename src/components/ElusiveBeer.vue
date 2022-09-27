@@ -6,7 +6,7 @@
       :class="{ rightAlign: rightAlign }"
     >
       <img
-        class="logo"
+        class=""
         src="@/assets/images/elusive_beer.png"
         style="width: 80px; height: 80px"
       />
@@ -24,7 +24,6 @@ export default Vue.extend({
   },
   methods: {
     hideBeer() {
-      console.log(this.$data.rightAlign);
       this.$data.rightAlign = !this.$data.rightAlign;
     },
   },
