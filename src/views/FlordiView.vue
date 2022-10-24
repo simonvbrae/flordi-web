@@ -170,7 +170,7 @@ export default Vue.extend({
   mounted() {
     this.$data.windowHeight = window.innerHeight;
 
-    window.onscroll = (e) => {
+    window.onscroll = () => {
       if (
         document.body.scrollTop > this.$data.windowHeight ||
         document.documentElement.scrollTop > this.$data.windowHeight

@@ -25,7 +25,21 @@
           <li>Students & flexi's in the café</li>
           <li>Permanent employee in the café</li>
           <li>Volunteers</li>
-          <li><a class="blockURL" href="vacancy">Social entrepreneurs</a></li>
+          <li>
+            <a class="blockURL" target="_blank" :href="musicCafeManagerURL"
+              >Bar Manager</a
+            >
+          </li>
+          <li>
+            <a class="blockURL" target="_blank" :href="kitchenManagerURL"
+              >Vegan Cook & Kitchen Manager</a
+            >
+          </li>
+          <li>
+            <a class="blockURL" target="_blank" :href="projectCoordinatorURL"
+              >Project Coordinator</a
+            >
+          </li>
           <li>
             IT enthousiasts:
             <a class="blockURL" href="https://github.com/simonvbrae/flordi-web"
@@ -45,6 +59,16 @@ export default Vue.extend({
   name: "JobSection",
   props: {
     section_id: { type: String },
+  },
+  data() {
+    return {
+      musicCafeManagerURL:
+        "https://11.be/vacatures/verantwoordelijke-muziekcafe",
+      kitchenManagerURL:
+        "https://11.be/vacatures/vegan-kok-en-keukenverantwoordelijke",
+      projectCoordinatorURL:
+        "https://11.be/vacatures/projectcoordinator-sociale-onderneming",
+    };
   },
 });
 </script>

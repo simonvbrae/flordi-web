@@ -42,7 +42,6 @@ export default Vue.extend({
   },
   methods: {
     hi() {
-      console.log(this.$data.preBeer);
       this.$data.preBeer = !this.$data.preBeer;
     },
   },

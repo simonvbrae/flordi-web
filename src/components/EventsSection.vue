@@ -21,11 +21,12 @@
       ></iframe>
     </div>
 
-    <v-container>
+    <v-container class="event-container">
       <v-row v-for="e in events" :key="e.title">
         <EventCard
           :title="e.title"
-          :date="e.date"
+          :month="e.month"
+          :day="e.day"
           :startHour="e.startHour"
           :endHour="e.endHour"
           :url="e.URL"
@@ -48,17 +49,75 @@ export default Vue.extend({
     EventCard,
   },
   data() {
+    const events = [
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+      {
+        title: "Flordi werkweekend",
+        month: 10,
+        day: 24,
+        startHour: "12:00-19:00",
+        endHour: "19:00",
+        URL: "facebook.com",
+      },
+    ];
     return {
       clientWidth: 0,
-      events: [
-        {
-          title: "Flordi werkweekend",
-          date: "4/04",
-          startHour: "12:00-19:00",
-          endHour: "19:00",
-          URL: "facebook.com",
-        },
-      ],
+      events: events,
     };
   },
   computed: {
@@ -84,6 +143,10 @@ export default Vue.extend({
 .scrollbar {
   color: aquamarine;
   fill-opacity: 50%;
+}
+.event-container {
+  max-height: 100px;
+  overflow: auto;
 }
 
 .title {

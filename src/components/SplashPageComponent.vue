@@ -17,7 +17,6 @@
 </template>
 
 <script lang="js">
-import splash from "@/assets/images/splash.png";
 
 export default {
   name: "SplashPageComponent",
